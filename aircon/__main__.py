@@ -89,7 +89,7 @@ def ParseArguments() -> argparse.Namespace:
   parser_discovery = subparsers.add_parser('discovery', help='Runs the device discovery')
   parser_discovery.add_argument('app', choices=set(SECRET_MAP), help='The app used for the login.')
   parser_discovery.add_argument('user', help='Username for the app login.')
-  parser_discovery.add_argument('passwd', help='Password for the app login.')
+  parser_discovery.add_argument('password', help='Password for the app login.')
   parser_discovery.add_argument('-d',
                                 '--device',
                                 default=None,
@@ -261,7 +261,7 @@ async def discovery(parsed_args):
   async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(connect=5.0)) as session:
     try:
       all_configs = await perform_discovery(session, parsed_args.app, parsed_args.user,
-                                            parsed_args.passwd, parsed_args.device,
+                                            parsed_args.password, parsed_args.device,
                                             parsed_args.properties)
     except Exception as e:
       print(f'Error occurred:\n{e!r}')

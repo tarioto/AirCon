@@ -12,12 +12,12 @@ from .app_mappings import *
 _USER_AGENT = 'Dalvik/2.1.0 (Linux; U; Android 9.0; SM-G850F Build/LRX22G)'
 
 
-async def _sign_in(user: str, passwd: str, user_server: str, app_id: str, app_secret: str,
+async def _sign_in(user: str, password: str, user_server: str, app_id: str, app_secret: str,
                    session: aiohttp.ClientSession, ssl_context: ssl.SSLContext):
   query = {
       'user': {
           'email': user,
-          'password': passwd,
+          'password': password,
           'application': {
               'app_id': app_id,
               'app_secret': app_secret
@@ -102,7 +102,7 @@ async def _get_device_properties(devices_server: str, dsn: str, headers: dict,
 async def perform_discovery(session: aiohttp.ClientSession,
                             app: str,
                             user: str,
-                            passwd: str,
+                            password: str,
                             device_filter: str = None,
                             properties_filter: bool = False) -> dict:
   if app in SECRET_ID_MAP:
@@ -131,7 +131,7 @@ async def perform_discovery(session: aiohttp.ClientSession,
   ssl_context.check_hostname = False
   ssl_context.load_default_certs()
 
-  access_token = await _sign_in(user, passwd, user_server, app_id, app_secret, session, ssl_context)
+  access_token = await _sign_in(user, password, user_server, app_id, app_secret, session, ssl_context)
 
   result = []
   headers = {
