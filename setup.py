@@ -13,9 +13,9 @@ setuptools.setup(
     description='Interface for controlling Air Conditioners, e.g. with HiSense modules.',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/deiger/AirCon',
-    author='Dror Eiger',
-    author_email='droreiger@gmail.com',
+    url='https://github.com/tarioto/AirCon',
+    author='Tim Arioto',
+    author_email='timarioto@gmail.com',
     license='GPL 3.0',
     packages=setuptools.find_packages(),
     install_requires=[
